@@ -35,11 +35,21 @@ public class Venta {
 	@Column(nullable = false)
 	private double cambioventa;
 	@Column(nullable = false)
+	private int estatus;
+	@Column(nullable = false)
 	private Date fechaaudit;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "venta")
 	private List<DetalleVenta> detalles;
+
+	public int getEstatus() {
+		return estatus;
+	}
+
+	public void setEstatus(int estatus) {
+		this.estatus = estatus;
+	}
 
 	public List<DetalleVenta> getDetalles() {
 		return detalles;

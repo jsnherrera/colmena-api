@@ -14,7 +14,7 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Long> {
 	@Query("select user from Usuario user where user.estatus = 1")
 	public List<Usuario> findAll();
 
-	@Query("select user from Usuario user where user.nombreUsuario = ?1 or user.email = ?1")
+	@Query("select user from Usuario user where (user.nombreUsuario = ?1 or user.email = ?1) and estatus = 1")
 	public Usuario findByNombreUsuario(String nombreUsuario);
 
 }

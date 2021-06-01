@@ -1,5 +1,6 @@
 package com.api.colmena.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class VentaService {
 		return response;
 	}
 
-	public ResponseVentas getVentas() {
+	public ResponseVentas getVentas(Date fechaini, Date fechafin) {
 		ResponseVentas response = new ResponseVentas();
 		try {
-			List<Venta> list = this.repo.findAll();
+			List<Venta> list = this.repo.findAll(fechaini, fechafin);
 			response.setVentas(list);
 			response.setCodigo(0);
 			response.setMensaje("Exito");

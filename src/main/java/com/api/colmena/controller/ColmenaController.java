@@ -1,5 +1,7 @@
 package com.api.colmena.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -158,11 +160,11 @@ public class ColmenaController {
 		return response;
 	}
 
-	@GetMapping(value = "/getAllVentas")
-	public ResponseVentas getAllVentas() {
+	@GetMapping(value = "/getAllVentas/{fechaini}/{fechafin}")
+	public ResponseVentas getAllVentas(@PathVariable Date fechaini, @PathVariable Date fechafin) {
 		ResponseVentas response = new ResponseVentas();
 		try {
-			response = this.ventaService.getVentas();
+			response = this.ventaService.getVentas(fechaini, fechafin);
 		} catch (Exception e) {
 			response.setCodigo(-1);
 			response.setMensaje(e.toString());
