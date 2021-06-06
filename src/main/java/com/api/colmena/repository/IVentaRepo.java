@@ -12,7 +12,7 @@ import com.api.colmena.model.Venta;
 @Repository
 public interface IVentaRepo extends JpaRepository<Venta, Long> {
 
-	@Query("select venta from Venta venta where venta.fechaaudit between ?1 and ?2 and estatus = 1")
+	@Query("select venta from Venta venta where venta.fechaaudit between ?1 and ?2 and estatus = 1 order by fechaaudit desc")
 	public List<Venta> findAll(Date fechaini, Date fechafin);
 
 }
